@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Barista Form</title>
+</head>
+<body>
+
+<h2>Barista Entry</h2>
+
+<input type="text" id="name" placeholder="Name"><br><br>
+<input type="number" id="age" placeholder="Age"><br><br>
+
+<button onclick="submitData()">Submit</button>
+
+<script>
+function submitData() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+
+  <!--fetch("YOUR_WEB_APP_URL_HERE", {-->
+fetch("https://script.google.com/macros/s/AKfycbwfuYuce6KYW7tEt1sdx-3y-RL6_VlxykXRIVDWG8igJBzNunFUwNH7EjsUmcfegOom/exec", {
+
+    method: "POST",
+    body: JSON.stringify({ name, age, key:"passcode123" })
+  })
+  .then(res => res.json())
+  .then(data => alert(data.message))
+  .catch(err => alert("Error"));
+}
+</script>
+
+</body>
+</html>
